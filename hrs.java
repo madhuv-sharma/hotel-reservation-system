@@ -5,6 +5,7 @@ import java.io.*;
 
 public class hrs
 {
+
     String c_name, add, phone_no;
     double b_amt, gst;
     int b_dur, adults, children,total_cust, mattress;
@@ -99,13 +100,11 @@ public class hrs
             for(int i=0;i<c_name.length();i++)
             {
                 if(i==0)
-                {
                     if(Character.isWhitespace(c_name.charAt(i)))
                     {
                         flag=false;
                         break;
                     }
-                }
                 if(!(Character.isLetter(c_name.charAt(i))||Character.isWhitespace(c_name.charAt(i))))
                 {
                     flag=false;
@@ -148,9 +147,7 @@ public class hrs
             System.out.println("Enter Booking Duration (in days) :");
             b_dur=sc.nextInt();
             if(b_dur<1)
-            {
                 System.out.println("Wrong input.");
-            }
             else
                 break;
         }
