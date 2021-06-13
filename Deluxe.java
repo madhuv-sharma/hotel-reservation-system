@@ -1,8 +1,7 @@
 package com.Hotel.Reservation;
 
-public class Deluxe extends Room {
-
-
+public class Deluxe extends Room
+{
 	public void set(int r,boolean w,boolean s)
 	{
 		rate=r;
@@ -11,27 +10,20 @@ public class Deluxe extends Room {
 	}
 	
 	public int getRate()
-	{
 		return rate;
-	}
 
 	public boolean getStatus()
-	{
 		return status;
-	}
-	
+		
 	public boolean getWifi()
-	{
 		return wifi;
-	}
-	
-	
-	public void statuschange() {
+
+	public void statuschange()
+	{
 		// TODO Auto-generated method stub
-		if(status==true)
+		if(status)
 			status= false;
 		else
-			status=true;
-		
+			status=true;		
 	}
 }
