@@ -1,6 +1,8 @@
-package HRS;
+package HRS; // may vary
+
 import java.util.*;
 import java.io.*;
+
 public class hrs
 {
     String c_name, add, phone_no;
@@ -8,6 +10,7 @@ public class hrs
     int b_dur, adults, children,total_cust, mattress;
     char laundry, brkfst, lunch, dinner, wifi, swimming, gym, spa, r_type, x;
     boolean flag;
+    
     public hrs()
     {
         c_name=null;
@@ -32,41 +35,31 @@ public class hrs
         x=' ';
         flag=true;
     }
+    
     public void inp() throws IOException
     {
-        System.out.println("**********Welcome to Hotel California**********");
+        System.out.println("**********Welcome to Hotel California**********"); // Any Hotel Name
+        
         Date date = new Date();
         System.out.println("**********"+date.toString()+"**********");
+        
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter B/b to book a room and E/e for exit :");
         x=sc.nextLine().charAt(0);
+        
         for(;x!='B'&&x!='b'&&x!='E'&&x!='e';)
         {
             System.out.println("Wrong input.\nEnter B/b to book a room and E/e for exit :");
             x=sc.nextLine().charAt(0);
         }
+        
         if(x=='E'||x=='e')
-        System.exit(0);
+            System.exit(0);
+        
         InputStreamReader isr=new InputStreamReader(System.in);
         BufferedReader br=new BufferedReader(isr);
-        System.out.println("Enter Number Of Adults :");
-        adults=sc.nextInt();
-        for(;adults<0;)
+        for(;;)
         {
-            System.out.println("Wrong input.\nEnter Number Of Adults :");
-            adults=sc.nextInt();
-        }
-        System.out.println("Enter Number Of Children :");
-        children=sc.nextInt();
-        for(;children<0;)
-        {
-            System.out.println("Wrong input.\nEnter Number Of Children :");
-            children=sc.nextInt();
-        }
-        total_cust=adults+children;
-        for(;total_cust<1;)
-        {
-            System.out.println("Total guests should be more than 1.");
             System.out.println("Enter Number Of Adults :");
             adults=sc.nextInt();
             for(;adults<0;)
@@ -74,6 +67,7 @@ public class hrs
                 System.out.println("Wrong input.\nEnter Number Of Adults :");
                 adults=sc.nextInt();
             }
+
             System.out.println("Enter Number Of Children :");
             children=sc.nextInt();
             for(;children<0;)
@@ -81,8 +75,15 @@ public class hrs
                 System.out.println("Wrong input.\nEnter Number Of Children :");
                 children=sc.nextInt();
             }
+
             total_cust=adults+children;
+            
+            if(total_cust!=0)
+                break;
+            else
+                System.out.println("Wrong input.\nTotal number of customers cannot be 0.");
         }
+        
         System.out.println("Enter Number Of Mattresses (if required) @Rs100 per mattress per day :");
         mattress=sc.nextInt();
         for(;mattress<0;)
@@ -90,10 +91,11 @@ public class hrs
             System.out.println("Wrong input.\nEnter Number Of Mattresses (if required) :");
             mattress=sc.nextInt();
         }
-        System.out.println("Enter your Name :");
-        c_name=br.readLine();
+        
         for(;;)
         {
+            System.out.println("Enter your Name :");
+            c_name=br.readLine();
             for(int i=0;i<c_name.length();i++)
             {
                 if(i==0)
@@ -111,48 +113,48 @@ public class hrs
                 }
             }
             if(flag)
-            {
                break;
-            }
             else
             {
-                System.out.println("Wrong input.\nEnter your Name :");
-                c_name=br.readLine();
+                System.out.println("Wrong input.");
                 flag=true;
             }
         }
+        
         System.out.println("Enter Address :");
         add=br.readLine();
-        System.out.println("Enter your Phone Number :");
-        phone_no=br.readLine();
+        
         for(;;)
         {
+            System.out.println("Enter your Phone Number :");
+            phone_no=br.readLine();
             for(int i=0;i<phone_no.length();i++)
-            {
                 if(!(Character.isDigit(phone_no.charAt(i))))
                 {
                     flag=false;
                     break;
                 }
-            }
             if(flag)
-            {
-               break; 
-            }
+               break;
             else
             {
-                System.out.println("Wrong input.\nEnter your Phone Number :");
-                phone_no=br.readLine();
+                System.out.println("Wrong input.");
                 flag=true;
             }
         }
-        System.out.println("Enter Booking Duration (in days) :");
-        b_dur=sc.nextInt();
-        for(;b_dur<1;)
+        
+        for(;;)
         {
-            System.out.println("Wrong input.\nEnter Booking duration (in days) :");
+            System.out.println("Enter Booking Duration (in days) :");
             b_dur=sc.nextInt();
+            if(b_dur<1)
+            {
+                System.out.println("Wrong input.");
+            }
+            else
+                break;
         }
+        
         System.out.println("Enter 1 for Standard room (@Rs 5000/day), 2 for Deluxe (@Rs 7000/day) or 3 for Super Deluxe (@Rs 9000/day) :");
         r_type=sc.next().charAt(0);
         for(;r_type!='1'&&r_type!='2'&&r_type!='3';)
@@ -160,6 +162,7 @@ public class hrs
             System.out.println("Wrong input.\nEnter 1 for Standard room (@Rs 5000/day), 2 for Deluxe  (@Rs 7000/day) or 3 for Super Deluxe  (@Rs 9000/day) :");
             r_type=sc.next().charAt(0);
         }
+        
         System.out.println("Enter Y/y to avail laundry service (@Rs 200/day) and N/n if not :");
         laundry=sc.next().charAt(0);
         for(;laundry!='Y'&&laundry!='N'&&laundry!='y'&&laundry!='n';)
@@ -167,6 +170,7 @@ public class hrs
             System.out.println("Wrong input\nEnter Y/y to avail laundry service (@Rs 200/day) and N/n if not :");
             laundry=sc.next().charAt(0);
         }      
+        
         System.out.println("Enter Y/y if interested in having breakfast (@Rs 500/day) and N/n if not :");
         brkfst=sc.next().charAt(0);
         for(;brkfst!='Y'&&brkfst!='N'&&brkfst!='y'&&brkfst!='n';)
@@ -174,6 +178,7 @@ public class hrs
             System.out.println("Wrong input\nEnter Y/y if interested in having breakfast (@Rs 500/day) and N/n if not :");
             brkfst=sc.next().charAt(0);
         }
+        
         System.out.println("Enter Y/y if interested in having lunch (@Rs 500/day) and N/n if not :");
         lunch=sc.next().charAt(0);
         for(;lunch!='Y'&&lunch!='N'&&lunch!='y'&&lunch!='n';)
@@ -181,6 +186,7 @@ public class hrs
             System.out.println("Wrong input\nEnter Y/y if interested in having lunch (@Rs 500/day) and N/n if not :");
             lunch=sc.next().charAt(0);
         }
+        
         System.out.println("Enter Y/y if interested in having dinner (@Rs 500/day) and N/n if not :");
         dinner=sc.next().charAt(0);
         for(;dinner!='Y'&&dinner!='N'&&dinner!='y'&&dinner!='n';)
@@ -188,6 +194,7 @@ public class hrs
             System.out.println("Wrong input\nEnter Y/y if interested in having dinner (@Rs 500/day) and N/n if not :");
             dinner=sc.next().charAt(0);
         }
+        
         System.out.println("Enter Y/y for wifi (@Rs 200/day) and N/n to not :");
         wifi=sc.next().charAt(0);
         for(;wifi!='Y'&&wifi!='N'&&wifi!='y'&&wifi!='n';)
@@ -195,6 +202,7 @@ public class hrs
             System.out.println("Wrong input\nEnter Y/y for wifi (@Rs 200/day) and N/n to not :");
             wifi=sc.next().charAt(0);
         }           
+        
         System.out.println("Enter Y/y to access swimming pool area (@Rs 250/day) and N/n to not :");
         swimming=sc.next().charAt(0);
         for(;swimming!='Y'&&swimming!='N'&&swimming!='y'&&swimming!='n';)
@@ -202,6 +210,7 @@ public class hrs
             System.out.println("Wrong input\nEnter Y/y to access swimming pool area (@Rs 250/day) and N/n to not :");
             swimming=sc.next().charAt(0);
         }
+        
         System.out.println("Enter Y/y to get gym facility (@Rs 250/day) and N/n to not :");
         gym=sc.next().charAt(0);
         for(;gym!='Y'&&gym!='N'&&gym!='y'&&gym!='n';)
@@ -209,6 +218,7 @@ public class hrs
             System.out.println("Wrong input\nEnter Y/y to get gym facility (@Rs 250/day) and N/n to not :");
             gym=sc.next().charAt(0);
         }            
+        
         System.out.println("Enter Y/y to get spa facility (@Rs 300/day) and N/n to not :");
         spa=sc.next().charAt(0);
         for(;spa!='Y'&&spa!='N'&&spa!='y'&&spa!='n';)
@@ -217,18 +227,22 @@ public class hrs
             spa=sc.next().charAt(0);
         }
     }
+    
     public double calculate()
     {
         System.out.println("Customer Name - "+c_name);
         if(r_type=='1')
-        b_amt=b_dur*5000;
+            b_amt=b_dur*5000;
         else if(r_type=='2')
-        b_amt=b_dur*7000;
+            b_amt=b_dur*7000;
         else
-        b_amt=b_dur*9000;
+            b_amt=b_dur*9000;
+        
         System.out.println("Room rental- Rs "+b_amt);
         b_amt+=(100*b_dur*mattress);
+        
         System.out.println("Mattress charges- Rs "+((100.0)*b_dur*mattress));
+        
         if(laundry=='Y'||laundry=='y')
         {
             b_amt+=(200*b_dur);
@@ -236,6 +250,7 @@ public class hrs
         }
         else
             System.out.println("Laundry charges- Rs 0.0");
+        
         if(brkfst=='Y'||brkfst=='y')
         {
             b_amt+=(500*b_dur);
@@ -243,6 +258,7 @@ public class hrs
         }
         else
             System.out.println("Breakfast charges- Rs 0.0");
+        
         if(lunch=='Y'||lunch=='y')
         {
             b_amt+=(500*b_dur);
@@ -250,6 +266,7 @@ public class hrs
         }
         else
             System.out.println("Lunch charges- Rs 0.0");
+        
         if(dinner=='Y'||dinner=='y')
         {
             b_amt+=(500*b_dur);
@@ -257,6 +274,7 @@ public class hrs
         }
         else
             System.out.println("Dinner charges- Rs 0.0");
+        
         if(wifi=='Y'||wifi=='y')
         {
             b_amt+=(200*b_dur);
@@ -264,6 +282,7 @@ public class hrs
         }
         else
             System.out.println("Wifi charges- Rs 0.0");
+        
         if(swimming=='Y'||swimming=='y')
         {
             b_amt+=(250*b_dur);
@@ -271,6 +290,7 @@ public class hrs
         }
         else
             System.out.println("Swimming charges- Rs 0.0");
+        
         if(gym=='Y'||gym=='y')
         {
             b_amt+=(250*b_dur);
@@ -278,6 +298,7 @@ public class hrs
         }
         else
              System.out.println("Gym charges- Rs 0.0");
+        
         if(spa=='Y'||spa=='y')
         {
             b_amt+=(300*b_dur);
@@ -285,24 +306,27 @@ public class hrs
         }
         else
              System.out.println("Spa charges- Rs 0.0");
+        
         System.out.println("Bill (excluding GST) - Rs "+b_amt);
         gst=((b_amt*18)/100);
         System.out.println("GST(18%)- Rs "+gst);
         b_amt=b_amt+gst;
+        
         return b_amt;
     }
+    
     public static void main()
     {
         hrs obj=new hrs();
+        
         try
-        {
             obj.inp();
-        }
         catch(IOException e)
-        {
             e.printStackTrace();
-        }
+        
         System.out.println("Amount payable (inclusive of GST) is Rs "+obj.calculate());
+        
         System.out.println("**********Thank you for your visit.**********\n**********We hope to see you again!**********");
     }
+    
 }
