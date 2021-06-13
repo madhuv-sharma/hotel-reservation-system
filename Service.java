@@ -1,7 +1,7 @@
 package com.Hotel.Reservation;
 
-abstract public class Service {
-	
+abstract public class Service
+{	
 	int type;
 	int cost;
 	int quantity;
@@ -20,11 +20,11 @@ abstract public class Service {
 	abstract public int getTotalCost();
 	abstract public boolean getStatus();
 	
-//	Service(int a,int b,int c,String d)
-//	{
-//		type=a;
-//		cost=b;
-//		quantity=c;
-//		bno=d;
-//	}
+/*	Service(int a,int b,int c,String d)
+	{
+		type=a;
+		cost=b;
+		quantity=c;
+		bno=d;
+	}*/
 }
