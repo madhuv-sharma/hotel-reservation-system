@@ -6,7 +6,7 @@ public class Laundry extends Service
 {
 	Laundry()
 		super();
-
+		
 	public void setDetails()
 	{
 		status=true;
@@ -29,7 +29,6 @@ public class Laundry extends Service
 	
 	public int getTotalCost()
 		return quantity*cost;
-
 	public boolean getStatus()
 		return status;
 }
