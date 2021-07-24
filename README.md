@@ -1,4 +1,4 @@
-# hotel-reservation-system
+# Hotel Reservation System
 
 **Project Question:**
 
